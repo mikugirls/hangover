@@ -3,7 +3,11 @@ FROM menci/archlinuxarm:base-devel
 ARG LLVMMINGW_DATE=20260505
 ARG LLVMMINGW_NAME=llvm-mingw-$LLVMMINGW_DATE-ucrt-ubuntu-22.04-aarch64
 
-RUN sed -i 's/^CheckSpace/#CheckSpace/' /etc/pacman.conf && \
+RUN sed -i \
+    -e 's/^CheckSpace/#CheckSpace/' \
+    -e 's/^[[:space:]]*DownloadUser[[:space:]]*=/#&/' \
+    -e '/^\[options\]/a DisableSandbox' \
+    /etc/pacman.conf && \
     pacman -Syu --noconfirm \
     autoconf \
     automake \
