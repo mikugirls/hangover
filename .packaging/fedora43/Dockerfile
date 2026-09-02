@@ -1,6 +1,6 @@
 FROM fedora:43
 
-ARG LLVMMINGW_DATE=20260505
+ARG LLVMMINGW_DATE=20260826
 ARG LLVMMINGW_NAME=llvm-mingw-$LLVMMINGW_DATE-ucrt-ubuntu-22.04-aarch64
 
 RUN dnf -y update && dnf -y install \
